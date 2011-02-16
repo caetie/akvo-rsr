@@ -68,6 +68,7 @@ INSTALLED_APPS = (
     'pagination',
     'oembed',
     'django_markup',
+    'tastypie',
 )
 
 #INTERNAL_IPS = (
