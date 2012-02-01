@@ -30,6 +30,8 @@ scripts/deployment/update_ci_server_config.py
 tests/akvo/acceptance/test_settings.py
 tests/pvw/acceptance/test_settings.py
 
+## Vagrant
+.vagrant
 
 # Environment
 
