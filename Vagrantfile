@@ -12,10 +12,10 @@ Vagrant::Config.run do |config|
 
   config.vm.share_folder("v-root", "/var/akvo", ".", :nfs => true)
 
-  # config.vm.provision :puppet do |puppet|
-  #    puppet.manifests_path = "scripts/deployment/puppet/manifests"
-  #    puppet.manifest_file  = "base.pp"
-  #    puppet.module_path = "scripts/deployment/puppet/modules"
-  #    puppet.options = "--verbose --debug"
-  # end
+  config.vm.provision :puppet do |puppet|
+     puppet.manifests_path = "scripts/deployment/puppet/manifests"
+     puppet.manifest_file  = "base.pp"
+     puppet.module_path = "scripts/deployment/puppet/modules"
+     # puppet.options = "--verbose --debug"
+  end
 end
