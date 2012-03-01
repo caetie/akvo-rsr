@@ -4,6 +4,7 @@ class python::python {
     cwd => "/opt",
     command => "/usr/bin/wget http://python.org/ftp/python/2.7.2/Python-2.7.2.tgz",
     creates => "/opt/Python-2.7.2.tgz",
+    require => Class['python::deps'],
   }
 
   exec { "unpackage-python":
