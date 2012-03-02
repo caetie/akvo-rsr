@@ -3,6 +3,7 @@
 
 Vagrant::Config.run do |config|
   # config.vm.boot_mode = :gui
+  config.vm.host_name = "akvo.dev"
   config.vm.box_url = "https://dl.dropbox.com/s/dqw9m7mujye0rix/akvo_ubuntu_10.04_64_4.1.8.box?dl=1"
   config.vm.box = "akvo_ubuntu_10.04_64_4.1.8"
 

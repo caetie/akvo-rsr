@@ -4,6 +4,7 @@ class system::deps {
     [
       "build-essential",
       "checkinstall",
+      "libssl-dev",
     ]:
     ensure => "latest",
     require => Class['system::apt'],

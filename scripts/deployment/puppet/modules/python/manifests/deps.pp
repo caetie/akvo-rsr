@@ -4,7 +4,6 @@ class python::deps {
   package {
     [
       "libncursesw5-dev", 
-      "libssl-dev", 
       "libsqlite3-dev", 
       #"tk-dev", 
       "libgdbm-dev", 

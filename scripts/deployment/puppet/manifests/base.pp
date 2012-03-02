@@ -10,6 +10,9 @@ include python::python
 include python::pip
 include python::venv
 
+include nginx::deps
+include nginx::install
+
 include node::deps
 include node::node
 include node::npm
