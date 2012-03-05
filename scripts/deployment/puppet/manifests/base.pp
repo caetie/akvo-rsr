@@ -10,8 +10,10 @@ include python::python
 include python::pip
 include python::venv
 
-include nginx::deps
-include nginx::install
+include nginx
+# include nginx::deps
+# include nginx::install
+# include nginx::conf
 
 include node::deps
 include node::node
