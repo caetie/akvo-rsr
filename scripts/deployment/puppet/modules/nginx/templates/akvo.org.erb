@@ -5,7 +5,8 @@ upstream rsr {
 
 # Normal RSR
 server {
-    listen 80;
+    # listen 80;
+    listen 1337;
     server_name akvo.org akvo.dev;
 
     access_log logs/akvo.access.log;
@@ -34,7 +35,8 @@ server {
 
 # Partner sites
 server {
-    listen 80 default;
+    listen 1337 default;
+    # listen 80 default;
 
     access_log logs/akvoapp.access.log;
     error_log logs/akvoapp.error.log;
