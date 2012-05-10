@@ -14,10 +14,10 @@
     var center, mapOptions, zoom;
     center = '0, 0';
     zoom = 15;
-    mapOptions = new google.maps.MapOptions({
+    mapOptions = {
       'center': center,
       'zoom': zoom
-    });
+    };
     jQuery(document).ready(function($) {
       $('#map_canvas').gmap(mapOptions).bind('init', function() { 
         $.ajax({
