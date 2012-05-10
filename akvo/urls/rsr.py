@@ -82,7 +82,8 @@ urlpatterns += patterns('',
     url(r'^rsr/maps/organisations/all/$', direct_to_template, {'template': 'rsr/organisation/global_organisation_map.html'},
         name='global_organisation_map'),
     url(r'^rsr/maps/projects.json$', 'akvo.rsr.views.global_project_map_json', name='global_project_map_json'),
-
+    url(r'^rsr/maps/projects/ajax/$', direct_to_template, {'template': 'rsr/inclusion_tags/global_ajax_project_map.html'}, name='global_project_map_ajax') 
+    
     # Organisation
     url(r'^rsr/organisations/$', 'akvo.rsr.views.orglist', name='rsr_org_list'),
     url(r'^rsr/organisations/(?P<org_type>[_a-zA-Z]+)/$', 'akvo.rsr.views.orglist', name='rsr_org_list_filtered'),
