@@ -38,6 +38,7 @@ from django.views.decorators.http import require_GET, require_POST
 from datetime import datetime
 from registration.models import RegistrationProfile
 import random
+import json
 
 from mollie.ideal.utils import query_mollie, get_mollie_fee
 from paypal.standard.forms import PayPalPaymentsForm
@@ -1363,7 +1364,15 @@ def mollie_thanks(request):
 def global_map(request):
     projects = Project.objects.published()
     marker_icon = getattr(settings, 'GOOGLE_MAPS_MARKER_ICON', '')
-    return {'projects': projects, 'marker_icon': marker_icon}
+    return {'projects': projects, 'marker_icon': marker_icon}]
+
+def global_map_json(request):
+    project_locations = []
+    for project in Project.objects.published():
+        for location in project.locations.all():
+            latitude, longitude = location.latitude, location.longitude
+            project_locations.extend(dict(project_id=project.id, latitude=latitude, longitude=longitude))  
+    return HttpResponse(json.dumps(project_locations), content_type="application/json", **kwargs)
 
 @render_to('rsr/akvo_at_a_glance.html')
 def data_overview(request):
