@@ -1371,7 +1371,7 @@ def global_project_map_json(request):
     for project in Project.objects.published():
         for location in project.locations.all():
             latitude, longitude = location.latitude, location.longitude
-            project_locations.extend(dict(project_id=project.id, latitude=latitude, longitude=longitude))  
+            project_locations.append(dict(project_id=project.id, latitude=latitude, longitude=longitude))  
     return HttpResponse(json.dumps(project_locations), content_type="application/json", **kwargs)
 
 @render_to('rsr/akvo_at_a_glance.html')
