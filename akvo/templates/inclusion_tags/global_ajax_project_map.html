@@ -9,8 +9,14 @@
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
   <script type="text/javascript" src="{{MEDIA_URL}}core/js/jquery.ui.map.full.min.js"></script>
   <script>
+    var center, mapOptions;
+    center = new.google.maps.LatLng(0, 0);
+    mapOptions = new google.maps.MapOptions({
+      center = center,
+      zoom = 15
+    });
     jQuery(document).ready(function($) {
-      $('#map_canvas').gmap().bind('init', function() { 
+      $('#map_canvas').gmap(mapOptions).bind('init', function() { 
         $.ajax({
           url: 'http://akvo.dev/rsr/maps/projects.json',
         }).done(function(data) {
