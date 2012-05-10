@@ -1,3 +1,5 @@
+{% load url from future %}
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -18,9 +20,9 @@
     jQuery(document).ready(function($) {
       $('#map_canvas').gmap(mapOptions).bind('init', function() { 
         $.ajax({
-          url: 'http://akvo.dev/rsr/maps/projects.json',
+          'url': '{% url 'global_project_map_json' %}'
         }).done(function(data) {
-          $.each( data.markers, function(unused_iterator, marker) {
+          $.each( data, function(unused_iterator, marker) {
             $('#map_canvas').gmap('addMarker', { 
               'position': new google.maps.LatLng(marker.latitude, marker.longitude), 
               'bounds': true 
