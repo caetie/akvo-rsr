@@ -81,6 +81,7 @@ urlpatterns += patterns('',
         name='global_project_map'),
     url(r'^rsr/maps/organisations/all/$', direct_to_template, {'template': 'rsr/organisation/global_organisation_map.html'},
         name='global_organisation_map'),
+    url(r'^rsr/maps/projects.json$', 'akvo.rsr.views.global_project_map_json', name='global_project_map_json'),
 
     # Organisation
     url(r'^rsr/organisations/$', 'akvo.rsr.views.orglist', name='rsr_org_list'),
