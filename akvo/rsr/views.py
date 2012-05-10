@@ -1364,7 +1364,7 @@ def mollie_thanks(request):
 def global_map(request):
     projects = Project.objects.published()
     marker_icon = getattr(settings, 'GOOGLE_MAPS_MARKER_ICON', '')
-    return {'projects': projects, 'marker_icon': marker_icon}]
+    return {'projects': projects, 'marker_icon': marker_icon}
 
 def global_project_map_json(request):
     project_locations = []
