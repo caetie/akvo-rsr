@@ -12,8 +12,8 @@
     var center, mapOptions;
     center = new.google.maps.LatLng(0, 0);
     mapOptions = new google.maps.MapOptions({
-      center = center,
-      zoom = 15
+      center: center,
+      zoom: 15
     });
     jQuery(document).ready(function($) {
       $('#map_canvas').gmap(mapOptions).bind('init', function() { 
