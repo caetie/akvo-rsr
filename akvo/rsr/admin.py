@@ -85,9 +85,18 @@ class CountryAdmin(admin.ModelAdmin):
 admin.site.register(get_model('rsr', 'country'), CountryAdmin)
 
 
+class LocationAdmin(admin.ModelAdmin):
+  def save_model(self, request, obj, form, change):
+      pass
+
+  def delete_model(self, request, obj):
+      pass
+
+
 class LocationInline(generic.GenericStackedInline):
     model = get_model('rsr', 'location')
     extra = 0
+
 
 class OrganisationAdmin(admin.ModelAdmin):
     fieldsets = (
