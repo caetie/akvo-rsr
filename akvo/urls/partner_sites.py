@@ -11,8 +11,8 @@ from django.conf import settings
 from django.conf.urls.defaults import patterns, url
 from django_counter.urls import urlpatterns as counter_urls
 
-from akvo.rsr import views_partner_sites as views
 from akvo.rsr.feeds import ProjectUpdates, OrganisationUpdates
+from akvo.rsr.views import partner_sites as views
 
 urlpatterns = patterns('',
     # Home
