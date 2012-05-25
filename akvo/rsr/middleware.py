@@ -52,13 +52,13 @@ PARTNER_SITES_DOMAINS = getattr(settings, 'PARTNER_SITES_DOMAINS',
 PARTNER_SITES_MARKETING_SITE = getattr(settings, 'PARTNER_SITES_MARKETING_SITE', 'http://www.akvoapp.org/')
 
 
-def is_rsr(domain):
+def is_rsr_instance(domain):
     "Predicate to determine if an incoming request domain should be handled as a regular instance of Akvo RSR."
     dev_domains = ('127.0.0.1', 'localhost', 'akvo.dev')
     return domain == 'akvo.org' or domain.endswith('.akvo.org') or domain in dev_domains
 
 
-def is_partner_site(domain):
+def is_partner_site_instance(domain):
     "Predicate to determine if an incoming request domain should be handled as a partner site instance."
     domain_parts = tuple(domain.split('.'))
     if len(domain_parts) >= 3:
@@ -86,12 +86,11 @@ def get_or_create_site(domain):
 
 
 class PartnerSitesRouterMiddleware(object):
-
     def process_request(self, request, partner_site=None):
         domain = request.get_host().split(':')[0]
-        if is_rsr(domain):  # Vanilla Akvo RSR instance
+        if is_rsr_instance(domain):  # Vanilla Akvo RSR instance
             request.urlconf = 'akvo.urls.rsr'
-        elif is_partner_site(domain):  # Partner site instance
+        elif is_partner_site_instance(domain):  # Partner site instance
             hostname = domain.split('.')[-3]
             try:
                 partner_site = PartnerSite.objects.get(hostname=hostname)
@@ -105,9 +104,9 @@ class PartnerSitesRouterMiddleware(object):
             except:
                 raise Http404
         if partner_site is not None and partner_site.enabled:
-                request.partner_site = settings.PARTNER_SITE = partner_site
-                request.organisation_id = partner_site.organisation.id
-                request.urlconf = 'akvo.urls.partner_sites'
+            request.partner_site = settings.PARTNER_SITE = partner_site
+            request.organisation_id = partner_site.organisation.id
+            request.urlconf = 'akvo.urls.partner_sites'
         site = get_or_create_site(domain)
         settings.SITE_ID = site.id
         return
